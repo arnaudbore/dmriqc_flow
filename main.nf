@@ -952,7 +952,7 @@ process QC_Register_T1 {
 }
 
 Channel
-    .fromPath("$input/**/*bval", maxDepth:2)
+    .fromPath("$input/**/bval", maxDepth:2)
     .collect(sort:true)
     .set{all_raw_bval}
 
@@ -973,7 +973,7 @@ Channel
   .set{all_bids_json}
 
 Channel
-  .fromPath("$input/**/*dwi.json", maxDepth:1)
+  .fromPath("$input/**/dwi.json", maxDepth:1)
   .map{it}
   .toSortedList()
   .set{all_raw_json}
@@ -985,7 +985,7 @@ all_raw_json
   .set{all_json}
 
 Channel
-    .fromPath("$input/**/*bvec", maxDepth:1)
+    .fromPath("$input/**/bvec", maxDepth:1)
     .collect(sort:true)
     .set{all_raw_bvec}
 
@@ -1085,7 +1085,7 @@ process QC_Raw_T1 {
 }
 
 Channel
-    .fromPath("$input/**/*dwi.nii.gz", maxDepth:1)
+    .fromPath("$input/**/dwi.nii.gz", maxDepth:1)
     .collect(sort:true)
     .set{all_raw_dwi}
 
